@@ -6,6 +6,8 @@ public class Vehicle {
     private String make;
     private int year;
     private String message;
+    private String colour;
+    private int engineCapacity;
 
     // global counter to count number of Vehicle objects created
     public static int counter = 0;
@@ -31,6 +33,13 @@ public class Vehicle {
         addToCounter();
     }
 
+    public Vehicle(String make, int year, String colour, int engineCapacity) {
+        this(make, year);
+        this.colour = colour;
+        this.engineCapacity = engineCapacity;
+        this.message += "\n-- Colour: " + colour + " and has capacity of " + engineCapacity + " cc";
+    }
+
     public String getMake() {
         return make;
     }
@@ -45,6 +54,34 @@ public class Vehicle {
 
     private void addToCounter() {
         counter++;  // count the number of Cars
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public int getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public void setEngineCapacity(int engineCapacity) {
+        this.engineCapacity = engineCapacity;
     }
 
     @Override

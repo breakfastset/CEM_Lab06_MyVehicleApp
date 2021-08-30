@@ -60,22 +60,62 @@
         android:id="@+id/yearEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
         android:ems="10"
         android:hint="e.g. 2019"
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/yearTextView"
+        app:layout_constraintStart_toStartOf="@+id/vehicleMakeEditText"
         app:layout_constraintTop_toTopOf="@+id/yearTextView" />
+
+    <TextView
+        android:id="@+id/colourTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Colour:"
+        app:layout_constraintStart_toStartOf="@+id/yearTextView"
+        app:layout_constraintTop_toBottomOf="@+id/yearTextView" />
+
+    <EditText
+        android:id="@+id/colourEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="e.g. Silver"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/colourTextView"
+        app:layout_constraintTop_toBottomOf="@+id/yearEditText" />
+
+    <TextView
+        android:id="@+id/engineCapacityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Engine CC:"
+        app:layout_constraintStart_toStartOf="@+id/colourTextView"
+        app:layout_constraintTop_toBottomOf="@+id/colourTextView" />
+
+    <EditText
+        android:id="@+id/engineCapacityEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="e.g 1900"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/colourEditText"
+        app:layout_constraintTop_toBottomOf="@+id/colourEditText" />
 
     <Button
         android:id="@+id/createVehicleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="52dp"
         android:onClick="onCreateVehicleButtonClick"
         android:text="Create Vehicle"
         app:layout_constraintStart_toStartOf="@+id/yearEditText"
-        app:layout_constraintTop_toBottomOf="@+id/yearEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/engineCapacityEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

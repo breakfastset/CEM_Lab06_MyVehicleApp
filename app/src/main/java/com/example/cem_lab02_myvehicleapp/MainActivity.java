@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MyOwnVehicleActivity 123-";
     private EditText vehicleMakeEditText;  // link this to xml's EditText in onCreate()
     private EditText yearEditText;
+    private EditText colourEditText;
+    private EditText engineCapacityEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         vehicleMakeEditText = findViewById(R.id.vehicleMakeEditText);  // link to xml's EditText
         yearEditText = findViewById(R.id.yearEditText);
+        colourEditText = findViewById(R.id.colourEditText);
+        engineCapacityEditText = findViewById(R.id.engineCapacityEditText);
     }
 
     public void onCreateVehicleButtonClick(View view) {
@@ -29,21 +33,22 @@ public class MainActivity extends AppCompatActivity {
         String vehicleMake = vehicleMakeEditText.getText().toString();
         String strYear = yearEditText.getText().toString();
 
+        // Lab 03
+        String colour = colourEditText.getText().toString();
+        String strEngineCapacity = engineCapacityEditText.getText().toString();
+
         // 2. Create a Vehicle object based on the info above
         Vehicle vehicle;
         String message;
-        if (!vehicleMake.trim().equals("")) {  // if vehicle make is not empty, then we create obj
+        if (isNotEmpty(vehicleMake) && isNotEmpty(strYear)
+                && isNotEmpty(colour) && isNotEmpty(strEngineCapacity)) {  // if vehicle make is not empty, then we create obj
             // convert strYear to number
-            int year;
-            try {
-                year = Integer.parseInt(strYear);
-            } catch (NumberFormatException nfe) {
-                year = 2021;  // default to 2021 if cannot be converted
-            }
-            vehicle = new Vehicle(vehicleMake, year);
+            int year = convertNumber(strYear, 2021);
+            int engineCapacity = convertNumber(strEngineCapacity, 1598);
+            vehicle = new Vehicle(vehicleMake, year, colour, engineCapacity);
             message = vehicle.getMessage();
         } else {
-            message = "Please enter a valid Vehicle Make and Year!";
+            message = "Please enter a valid Vehicle Make, Year, Colour and Engine Capacity!";
         }
 
         // 3. Display the vehicle information using a Toast
@@ -52,4 +57,19 @@ public class MainActivity extends AppCompatActivity {
         // 4. Log the application
         Log.d(TAG, "Number of times clicked: " + Vehicle.counter + "!");
     }
+
+    public boolean isNotEmpty(String text) {
+        return !text.trim().equals("");
+    }
+
+    public int convertNumber(String textNumber, int defaultNumber) {
+        int number;
+        try {
+            number = Integer.parseInt(textNumber);
+        } catch (NumberFormatException nfe) {
+            number = defaultNumber;
+        }
+        return number;
+    }
+
 }
