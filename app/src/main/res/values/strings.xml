@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">CEM_Lab02_MyVehicleApp</string>
+    <string name="app_name">Our Car Application V1</string>
+    <string name="create_button">Create Car</string>
 </resources>

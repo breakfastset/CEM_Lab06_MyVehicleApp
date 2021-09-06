@@ -53,6 +53,7 @@
         android:ems="10"
         android:hint="e.g Tesla Model X"
         android:inputType="textPersonName"
+        android:background="@color/border_colour"
         app:layout_constraintStart_toEndOf="@+id/vehicleMakeTextView"
         app:layout_constraintTop_toTopOf="@+id/vehicleMakeTextView" />
 
@@ -63,6 +64,7 @@
         android:ems="10"
         android:hint="e.g. 2019"
         android:inputType="number"
+        android:background="@color/border_colour"
         app:layout_constraintStart_toStartOf="@+id/vehicleMakeEditText"
         app:layout_constraintTop_toTopOf="@+id/yearTextView" />
 
@@ -79,13 +81,12 @@
         android:id="@+id/colourEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="28dp"
+        android:background="@color/border_colour"
         android:ems="10"
         android:hint="e.g. Silver"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/colourTextView"
-        app:layout_constraintTop_toBottomOf="@+id/yearEditText" />
+        app:layout_constraintStart_toStartOf="@+id/yearEditText"
+        app:layout_constraintTop_toTopOf="@+id/colourTextView" />
 
     <TextView
         android:id="@+id/engineCapacityTextView"
@@ -100,12 +101,12 @@
         android:id="@+id/engineCapacityEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:background="@color/border_colour"
         android:ems="10"
         android:hint="e.g 1900"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/colourEditText"
-        app:layout_constraintTop_toBottomOf="@+id/colourEditText" />
+        app:layout_constraintTop_toTopOf="@+id/engineCapacityTextView" />
 
     <Button
         android:id="@+id/createVehicleButton"
@@ -114,7 +115,9 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="52dp"
         android:onClick="onCreateVehicleButtonClick"
-        android:text="Create Vehicle"
+        android:text="@string/create_button"
+        android:textColor="@color/gold"
+        android:backgroundTint="@color/black"
         app:layout_constraintStart_toStartOf="@+id/yearEditText"
         app:layout_constraintTop_toBottomOf="@+id/engineCapacityEditText" />
 
