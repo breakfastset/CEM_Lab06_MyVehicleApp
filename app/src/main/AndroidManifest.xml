@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CEM_Lab02_MyVehicleApp">
         <activity
+            android:name=".DisplayVehicleActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -3,11 +3,15 @@ package com.example.cem_lab02_myvehicleapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText yearEditText;
     private EditText colourEditText;
     private EditText engineCapacityEditText;
+    private Vehicle vehicle;
+    private ArrayList<Vehicle> vehicleArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         yearEditText = findViewById(R.id.yearEditText);
         colourEditText = findViewById(R.id.colourEditText);
         engineCapacityEditText = findViewById(R.id.engineCapacityEditText);
+
+        vehicleArrayList = new ArrayList<>();  // initialize to empty arrayList
     }
 
     public void onCreateVehicleButtonClick(View view) {
@@ -38,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         String strEngineCapacity = engineCapacityEditText.getText().toString();
 
         // 2. Create a Vehicle object based on the info above
-        Vehicle vehicle;
         String message;
         if (isNotEmpty(vehicleMake) && isNotEmpty(strYear)
                 && isNotEmpty(colour) && isNotEmpty(strEngineCapacity)) {  // if vehicle make is not empty, then we create obj
@@ -46,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
             int year = convertNumber(strYear, 2021);
             int engineCapacity = convertNumber(strEngineCapacity, 1598);
             vehicle = new Vehicle(vehicleMake, year, colour, engineCapacity);
+            vehicleArrayList.add(vehicle);   // add vehicle to vehicleArrayList
             message = vehicle.getMessage();
+            message += "\nYou have " + vehicleArrayList.size() + " vehicles now";
         } else {
             message = "Please enter a valid Vehicle Make, Year, Colour and Engine Capacity!";
         }
@@ -72,4 +81,9 @@ public class MainActivity extends AppCompatActivity {
         return number;
     }
 
+    public void onViewCarButtonClick(View view) {
+        Intent intent = new Intent(this, DisplayVehicleActivity.class);
+        intent.putExtra("allCars", vehicleArrayList);
+        startActivity(intent);
+    }
 }

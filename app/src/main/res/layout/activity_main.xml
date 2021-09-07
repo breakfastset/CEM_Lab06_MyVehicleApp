@@ -109,16 +109,28 @@
         app:layout_constraintTop_toTopOf="@+id/engineCapacityTextView" />
 
     <Button
-        android:id="@+id/createVehicleButton"
+        android:id="@+id/addCarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="@color/black"
         android:onClick="onCreateVehicleButtonClick"
         android:text="@string/create_button"
         android:textColor="@color/gold"
-        android:backgroundTint="@color/black"
         app:layout_constraintStart_toStartOf="@+id/yearEditText"
         app:layout_constraintTop_toBottomOf="@+id/engineCapacityEditText" />
+
+    <Button
+        android:id="@+id/viewCarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:backgroundTint="@color/black"
+        android:onClick="onViewCarButtonClick"
+        android:text="@string/view_button"
+        android:textColor="@color/gold"
+        app:layout_constraintStart_toEndOf="@+id/addCarButton"
+        app:layout_constraintTop_toTopOf="@+id/addCarButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

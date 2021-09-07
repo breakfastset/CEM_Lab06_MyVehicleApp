@@ -1,7 +1,9 @@
 package com.example.cem_lab02_myvehicleapp;
 
 
-public class Vehicle {
+import java.io.Serializable;
+
+public class Vehicle implements Serializable {
     // attributes
     private String make;
     private int year;
