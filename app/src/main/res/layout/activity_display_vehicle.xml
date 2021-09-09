@@ -7,33 +7,67 @@
     tools:context=".DisplayVehicleActivity">
 
     <TextView
-        android:id="@+id/displayVehicleTextView"
+        android:id="@+id/displayVehicleMakeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="244dp"
-        android:text="Vehicle Details"
-        android:textSize="20sp"
+        android:layout_marginTop="36dp"
+        android:background="#CEFA9B"
+        android:text="Vehicle Make"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/carCountTextView" />
+
+    <TextView
+        android:id="@+id/displayVehicleYearTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="#CEFA9B"
+        android:text="Year"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/displayVehicleMakeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/displayVehicleMakeTextView" />
 
     <Button
         android:id="@+id/viewNextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:onClick="onNextCarButtonClick"
         android:text="Next Car"
-        app:layout_constraintStart_toStartOf="@+id/displayVehicleTextView"
-        app:layout_constraintTop_toBottomOf="@+id/displayVehicleTextView" />
+        app:layout_constraintStart_toStartOf="@+id/displayVehicleMakeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/displayEngineCCTextView" />
 
     <TextView
         android:id="@+id/carCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="160dp"
-        app:layout_constraintStart_toStartOf="@+id/displayVehicleTextView"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="104dp"
         android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/displayVehicleMakeTextView"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/displayColourTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:background="#CEFA9B"
+        android:text="Colour"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/displayVehicleYearTextView"
+        app:layout_constraintTop_toBottomOf="@+id/displayVehicleYearTextView" />
+
+    <TextView
+        android:id="@+id/displayEngineCCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:background="#CEFA9B"
+        android:text="Engine CC"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/displayColourTextView"
+        app:layout_constraintTop_toBottomOf="@+id/displayColourTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
