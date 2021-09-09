@@ -10,7 +10,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class DisplayVehicleActivity extends AppCompatActivity {
-    private TextView displayVehicleTextView;
+    private TextView displayVehicleMakeTextView;
+    private TextView displayVehicleYearTextView;
+    private TextView displayVehicleColourTextView;
+    private TextView displayVehicleEngineCCTextView;
     private ArrayList<Vehicle>vehicleArrayList;
     private int currentCarIndex;
     private TextView carCountTextView;
@@ -20,21 +23,31 @@ public class DisplayVehicleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_vehicle);
 
-        displayVehicleTextView = findViewById(R.id.displayVehicleTextView);
+        displayVehicleMakeTextView = findViewById(R.id.displayVehicleMakeTextView);
+        displayVehicleYearTextView = findViewById(R.id.displayVehicleYearTextView);
+        displayVehicleColourTextView = findViewById(R.id.displayColourTextView);
+        displayVehicleEngineCCTextView = findViewById(R.id.displayEngineCCTextView);
         carCountTextView = findViewById(R.id.carCountTextView);
 
         Intent intent = getIntent();
         vehicleArrayList = (ArrayList<Vehicle>) intent.getSerializableExtra("allCars");
 
-        String message = "";
+        String vehicleMake = "";
+        String vehicleYear = "";
+        String vehicleColour = "";
+        String vehicleEngineCC = "";
         currentCarIndex = -1;
         if (vehicleArrayList.size()!=0) {
-            message = vehicleArrayList.get(0).getMessage();  // get the first car
+            Vehicle currentVehicle = vehicleArrayList.get(0);
+            vehicleMake = currentVehicle.getMake();  // get the first car
+            vehicleYear = String.valueOf(currentVehicle.getYear());
+            vehicleColour = currentVehicle.getColour();
+            vehicleEngineCC = String.valueOf(currentVehicle.getEngineCapacity());
             currentCarIndex = 0;  // to indicate that there are cars in the ArrayList
         }
 
-        carCountTextView.setText("Car: " + (currentCarIndex + 1) + " / " + vehicleArrayList.size());
-        displayVehicleTextView.setText(message);  // Display the first car
+        updateLabels(currentCarIndex+1, vehicleMake, vehicleYear,
+                vehicleColour, vehicleEngineCC);
     }
 
     public void onNextCarButtonClick(View view) {
@@ -45,8 +58,18 @@ public class DisplayVehicleActivity extends AppCompatActivity {
 
             Vehicle vehicle = vehicleArrayList.get(currentCarIndex);
 
-            carCountTextView.setText("Car: " + (currentCarIndex + 1) + " / " + vehicleArrayList.size());
-            displayVehicleTextView.setText(vehicle.getMessage());
+            updateLabels(currentCarIndex+1, vehicle.getMake(), String.valueOf(vehicle.getYear()),
+                    vehicle.getColour(), String.valueOf(vehicle.getEngineCapacity()));
         }
+    }
+
+    public void updateLabels(int carCount, String vehicleMake, String vehicleYear,
+                             String vehicleColour,
+                             String vehicleEngineCC) {
+        carCountTextView.setText("Car: " + carCount + " / " + vehicleArrayList.size());
+        displayVehicleMakeTextView.setText("Make: " + vehicleMake);
+        displayVehicleYearTextView.setText("Year: " + vehicleYear);
+        displayVehicleColourTextView.setText("Colour: " + vehicleColour);
+        displayVehicleEngineCCTextView.setText("Engine CC: " + vehicleEngineCC);
     }
 }
